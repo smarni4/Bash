@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#Author: Srikanth Marni
+
+#Date created: June 1 2022
+
+#Last modified: June 1 2022
+
+#Description: "This is the file which backups all the files in the ~/Desktop/dentin folder"
+
+#Usage: Run the "~/Desktop/Bash-OP/backupscript" command when backup is required.
+
+tar -cvf ~/Desktop/Bash-OP/my_backup_"$(date +%d-%m-%Y_%H-%M-%S)".tar ~/Desktop/dentin/*
+2>/dev/null
+
+exit 0
+
