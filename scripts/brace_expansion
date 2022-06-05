@@ -1,0 +1,7 @@
+#!/usr/local/bin/bash
+
+mkdir month{01..12}
+touch month{01..07..2}/day{01..31}.txt month{02..03..2}/day{01..28}.txt month{04..06..2}/day{01..30}.txt month{08..12..2}/day{01..31}.txt month{09..11..2}/day{01..30}.txt
+
+exit 0
+

@@ -1,0 +1,11 @@
+#!/usr/local/bin/bash
+
+echo "Enter the x value: "
+read x
+echo "Enter the y value: " 
+read y
+echo "Enter the operation symbol: "
+read op
+Sum=$(($x $op $y))
+echo "Sum of $x and  $y is $Sum." 
+

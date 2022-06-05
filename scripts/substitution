@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo
+echo "In command substitution we will use () instead of {} after $ sign."
+echo
+time=$(date +%H:%M:%S)
+echo "Hello $USER, the time is $time."
+

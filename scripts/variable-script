@@ -1,0 +1,33 @@
+#!/bin/bash
+
+echo
+echo "The below mentioned variable is user-defined variable. These variables are defined by the user to 
+store values and the user call's them using \${variable_name} to print the value stored in that variable."
+echo 
+student="Sri"
+echo "Hello ${student}"
+echo 
+echo "The below mentioned variable's are the shell defined variable's. These variables are pre-defined by 
+the shell with respective values as shown below."
+echo
+echo "Some of those variables are PATH, HOME, and USER. Which provides the list of folders that the shell 
+looks for executable files to run as command names, path to the current users home directory, shows the 
+current user name."
+echo
+echo "PATH: ${PATH}"
+echo 
+echo "HOME:  ${HOME}"
+echo
+echo "USER: ${USER}"
+echo
+echo "HOSTNAME(Shows the computer name): ${HOSTNAME}"
+printf "\n"
+echo "HOSTTYPE(Shows the type of processor achitecture): ${HOSTTYPE}"
+printf "\n"
+echo "PS1(Shows the prompt string shows in the terminal at the starting of every line): ${PS1}"
+echo
+echo "We can change the PS1 value by simple typing PS1=(Format you like)."
+echo
+PS1="srikanth:"
+echo "$PS1"
+echo
