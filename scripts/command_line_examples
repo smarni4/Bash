@@ -1,0 +1,16 @@
+#!/usr/local/bin/bash
+
+#Worked example1 in the section3.
+ 
+name="simon.smith"
+out="output.txt"
+
+echo $name > $HOME/Desktop/Bash-OP/outputs/$out
+#cat $HOME/Desktop/Bash-OP/outputs/$out
+
+# Worked example2 in the section3
+
+IFS="."
+
+echo $name >> "$HOME/Desktop/Bash-OP/outputs/$out"
+cat "$HOME/Desktop/Bash-OP/outputs/$out"

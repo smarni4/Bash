@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/local/bin/bash
 
 #Author: Srikanth Marni
 
@@ -9,9 +9,18 @@
 #Description: "This is the file which backups all the files in the ~/Desktop/dentin folder"
 
 #Usage: Run the "~/Desktop/Bash-OP/backupscript" command when backup is required.
+echo
+echo "Hello, ${USER^^}"
+echo "I will now backup your dentin directory, ~/Desktop/dentin/*"
+Backuploc=~/Desktop/Bash-op/
+currentdir=$(PWD)
+file=~/Desktop/dentin/*
+echo 
+echo "You are running the script from $currentdir."
+echo "I will store the backup file in ${Backuploc}."
 
-tar -cvf ~/Desktop/Bash-OP/my_backup_"$(date +%d-%m-%Y_%H-%M-%S)".tar ~/Desktop/dentin/*
+tar -cvf ${Backuploc}/my_backup_"$(date +%d-%m-%Y_%H-%M-%S)".tar ${file}
 2>/dev/null
-
+echo "Backup completed successfully!"
 exit 0
 

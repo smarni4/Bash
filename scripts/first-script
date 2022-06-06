@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "Hello, this is the first script file in bash"
+exit 0
