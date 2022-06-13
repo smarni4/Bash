@@ -1,0 +1,58 @@
++
+#!/usr/local/bin/bash
+
+: '
+echo "_______read command________"
+
+ read command takes input from the user. 
+ -s will secure the user input without printing it on the screen.
+ -t will provide the time limit to the user to enter the time, after that specified time the nextt command will get executed.
+ -p helps to print the text you want to show on the screen before taking the input.
+ -N Using this you can set the number of digits that user have to enter.
+ 
+#read -t 5 -p "Enter your name: " name
+#read -s -t 5 -p "Enter your age: "  age; echo
+#read -t 5 -p "Enter your city: "  city
+#echo
+#echo "The name of the user is ${name^}, his age is $age and lives in ${city^}"
+echo
+'
+echo
+
+echo "__read command practice__get extensions__select command__"
+echo
+read -p "Enter your first name: " f_name
+read -p "Enter your surname/family name: " l_name
+
+PS3="Enter the type of phone you are using: "
+
+select phone in headset handled;
+do
+echo "You are using $phone model phone."
+break
+done
+
+echo
+
+PS3="Enter your department: "
+
+select dep in finance sales "customer service" engineering;
+do
+echo "You selected the  $dep department."
+break
+done
+
+echo
+
+read -N 4 -p "Enter your extension number (must be 4 digits): " ext_num
+echo
+read -N 4 -s  -p "What access code you want to use when dialing in? (must be 4 digits): " acc_code
+
+echo
+if [ -f "../extensions.csv" ] 
+then
+	echo "$f_name,$l_name,$ext_num,$acc_code,$phone,$dep" >> ../outputs/extensions.csv
+else
+	echo "First_Name, Last_Name,Extension_Number,Access_COde,Phone_Number,Department" > ../outputs/extensions.csv
+	echo "$f_name,$l_name,$ext_num,$acc_code,$phone,$dep" >> ../outputs/extensions.csv
+fi

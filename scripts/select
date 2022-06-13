@@ -1,0 +1,18 @@
+#!/usr/local/bin/bash
+
+echo "________Select command_______"
+
+: 'Select command is used to select the one of the option in the given options. The  format of the select command 
+is as shown below.
+ PS3 is the prompt shell that is only for select command.	 
+ '
+echo
+PS3="what is the day?"
+echo $PS3
+select day in Monday Tuesday Wednesday Thursday Friday Saturday Sunday;
+do
+echo "The day of the week is $day."
+break
+done
+echo
+
