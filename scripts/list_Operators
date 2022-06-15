@@ -1,0 +1,57 @@
+#! /usr/local/bin/bash
+
+# List operators -----> & ; && ||
+
+# Used to perform more than one command in one line.
+
+# & --------> It performs commands asynchronously (in background)
+
+# ; --------> It performs commands sequentially. Eventhough the first command had an error, it performs the second command and leaves the error message for the first command.
+
+# && -------> It allows the second command to run only if the first command runs without any error.
+
+# || -------> It allows the second command to run only if the first command fails to run.
+
+# The && and || are usually known as "And" and "Or" operations. They can be used to perform the seequence of commands based on the previous commands output.
+
+# Example code:
+
+echo "first command" & echo "second command"
+echo
+echo "Third command" ; echo "This performs in sequential order."
+echo
+echo "Fourth command" && echo "This  will run only if the fourth command run."
+echo
+ls order && echo "This will run only if the fifth command run."
+echo
+echo "Sixth command" || echo "This will run only if the sixth command fails to run."
+echo
+ls order || echo "This will run only if the seventh command fails to run."
+echo
+
+# ---------*** Test Commands + Conditional Operators ***-------------
+
+# Test Commands should always be written in square brackets with space after opening and before closing them.
+
+# ----------------Integer Test Operators------------------
+
+# [ * -eq & ] ---> It checks whether the * equals to & or not. If it is true it gives exit status 0 and exit status 1 if it is flase.
+
+# -ne -----> It means not equals to.
+
+# -lt ------> It means less than.
+
+# -gt ---> It means greater than.
+
+# -geq ---> It means greater than or equal to.
+
+# -leq -----> It means lesser than or equal to.
+
+# $? -----> gives the exit status of last command.
+
+[ 1 -eq 1 ]
+echo
+[ 2 -ne 1 ] ; echo "The exit status of the last command is $?"
+
+# For remaining opertaors ckeck the Logic + Cheatshhet.pdf in materials section of Bash in the github.
+

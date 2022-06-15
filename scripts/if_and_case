@@ -1,0 +1,67 @@
+#! /usr/local/bin/bash
+
+: '
+ The format of if statement is 
+
+---->	if [ condition ]; then
+		task
+	fi
+
+The format of if-else statement is 
+
+---->   if [ condition ]; then
+		task
+	else
+		task
+	fi
+
+The format of if-elif statement is 
+
+-----> 	if [ condition ]; then
+		task
+	elif [ condition ]; then
+		task
+	else
+		task
+	fi
+'
+
+# ---------- IF Statements Project -----------
+: '
+if [ -d ~/Desktop/Bash-op/outputs/if-project ]; then
+	echo "The folder exists in the output folder."
+else
+	mkdir  ~/Desktop/Bash-op/outputs/if-project
+	echo "The folder is created."
+fi
+df  >> ~/Desktop/Bash-op/outputs/if-project/memory.log
+echo
+'
+# -------------- CASE Statements ---------------
+
+: '
+ The format of the case statements is
+
+------> To get the user choice for variable, we have to use read command
+
+	read -p "Text to print in the terminal" variable
+	case "$Variable" in
+		condition) task;;
+		condition) task;;
+		*) task;;  # It is a default case, which performs if no case is 
+			     matched for the input given.
+	esac
+'
+
+# ------------------ CASE Statements Project -----------------
+
+select city in "Tokyo" "London" "Los Angles" "Moscow" "Dubai" "Manchester" "New York" "Paris" "Bangalore" "Johannesburg" "Istanbul" "Milan" "Abu Dhabi" "Pune" "Nairobi" "Berlin" "Karachi"
+do
+case $city in
+	Tokyo | London | "Los Angles" | "New York") echo "You choosen the $city city, which is located in UK.";;
+	Istanbul | Milan | "Abu Dhabi" | Moscow | Dubai | Manchester ) echo "You choosen the $city city, which is located in UAE.";;
+	Paris | Johannesburg | Nairobi | Berlin ) echo "You choosen the $city city, which is located in the Frace.";;
+	Bangalore | Pune | Karachi ) echo "You choosen the $city city, which is located in the India.";;
+	*) echo "You entered out of the list";;
+esac
+done
