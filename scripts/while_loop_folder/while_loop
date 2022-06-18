@@ -1,0 +1,118 @@
+#! /usr/local/bin/bash
+
+
+# -------------------------- While Command ------------------------------------------------
+
+# While command  is used to run particular command several times as data meets the condition.
+
+: '
+   The syntax of the while loop is 
+	
+	while [ condition ];
+	do
+		task
+	done
+
+
+# -----> Example while loop code:
+
+read -p "Enter a number: " num
+echo
+echo "The two digit numbers lesser than the $num  are:"
+while  [ $(($num + 1 )) -gt 10 ]; 
+do
+echo $num
+num=$(( $num - 1 ))
+done		
+'
+
+# ------------------------------ While-getopts ----------------------------------------------
+
+# getopts command will helps to run the code several times based on the options provided by the user.
+
+: '
+
+     The syntax of the getops command is
+	
+	while getopts "option1:option2:" variable_name; do
+	case "$Variable_name" in
+		option1) task ;;
+		option2) task ;;
+		\?) task ;;        ----> in getopts if the user enters other than provided options, The system will store "?" in the variable_name place.
+	esac
+	done
+
+
+# ------------> To run the script with getopts, we have to give the option in the terminal while executing the file. Such as, "file_name -option input_value".
+
+# --------> Example getopts code:
+
+# a=$2
+# echo $a
+while getopts "f:c:" opt; do
+	case "$opt" in
+		c) result=$(echo "scale=2; ($OPTARG * (9 / 5)) + 32" | bc);;
+		f) result=$(echo "scale=2; ($OPTARG - 32) * (5/9)" | bc);;
+		\?) echo 'Enter either "c" or "f"';;
+	  esac
+
+	if [ $1=f ]; then
+		echo " The $2 in fahrenheit equals to $result celsius. "
+	elif [ $1=c ]; then
+		echo "The $2 in celsius equals to $result fahrenheit. "
+	else
+		echo "Choose F or C"
+	fi 
+done
+
+echo
+
+# ---------------------- While Loops Project -----------------------------
+
+
+while getopts "m:s:" time; do
+	case "$time" in
+		m) total_seconds=$(($2 * 60)) ;;
+		s) total_seconds=$(($2)) ;;
+		\?) echo "Select the option in minutes or seconds.";;
+	esac
+done
+	
+while [ $(($total_seconds)) -gt 0 ]; do
+	echo $total_seconds
+	total_seconds=$(($total_seconds-1))
+	sleep 1
+done
+'
+
+
+# ---------------------- Read While Loops & Project Substitution-------------------------------
+
+# Read while loops used to iterate(loop) through contents of the files or files in the dictionary. Using read while loops and process substitution we can iterate over the output of commands.
+
+# Read while loops are just while loops that use read commands as their test commands.
+
+# Project substitution means providing the output of a command as std input to the while loop as shown below ( ....done < <(ls ~/Desktop) )
+
+: '
+
+--------> The format of read while loop is 
+
+	while read arg_name; do
+		task
+	done < "path_to_file to read"
+
+-------> Example :
+	while read line; do
+		echo $line
+	done < <(ls ~/Desktop/)
+'
+# ---------------------------- Read While Loops Project ---------------------
+cd folders_created
+while read line; do
+	mkdir "$line"
+done <  "$1"
+
+
+
+
