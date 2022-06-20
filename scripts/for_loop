@@ -1,0 +1,37 @@
+#! /usr/local/bin/bash
+
+# For loop is used to iterate over a list of elements and performs a set of commands based on each element.
+
+# The format of for loop is as shown below :
+
+#	for varaible in element1 element2 element3; do
+#		echo "This is $element"
+#	done
+
+#------------------ for loop for elements in array ------------------------
+
+#for file in "${array_name[@]}"; do
+#	touch "$file"
+#done
+
+#------------------ for loop with conditions -----------------------------
+
+#for file in "${array[@]}"; do
+#	if [ -f "$file" ]; then
+#		echo "The file already exists."
+#	else
+#		touch "$file"
+#		echo "The  "$file" file was successfully created."
+#	fi
+#done
+
+#-------------------for loop project--------------------------------------
+
+readarray -t urls < <(cat ~/Desktop/urls.txt)
+mkdir ~/Desktop/Bash-op/outputs/for_loop
+for link in "${urls[@]}"; do
+	name=$(echo $link | cut -d "." -f "2")
+	cd ~/Desktop/Bash-op/outputs/for_loop
+	curl --head "$link" > $name.txt
+done
+

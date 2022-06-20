@@ -1,0 +1,64 @@
+#!/usr/local/bin/bash
+
+# Variables can only be used to store only one value at once.
+
+# Arrays can store thousands of values at once. In arrays values are seperated bby spaces. The format of  creating arrays is array_name=(x y z ..).
+
+# No space should not be given before and after equal sign.
+
+# we can call the values in the array using the index (index starts from 0). using echo ${array_name[index_numbe]}, we can call the value at that index position in the array.
+
+# To call the whole array we can use "@" sign in the place of index_number.
+
+# To slice the array we can use the ":", such as echo ${array_name[index_number]:start:length}
+
+# To add the values to the existing array, array_name+=(array_value).
+
+# To remove the value from the existing array, unset array_name[index_number]
+
+# To check the index numbers present in the array, echo ${!array_name[@]}
+
+# To replace the value in the array, array_name[index_number]=new_value
+
+# -----------------------------*** ReadArray Command ***---------------------------
+
+# The readarray command converts all its std input into an array.
+
+# In readarray command to see the hidden characters, echo ${array_name[@]@Q}. To avoid these kind of hidden characters, we can use -t such as readarray -t array_name < txt.file
+
+# For example :
+
+cd ~/Desktop/Bash-op/outputs/
+
+touch days.txt
+
+echo -e  " Sunday \n Monday \n Tuesday \n Wednesday \n Thursday \n Friday \n Saturday" > days.txt
+
+# -e option indicates echo to check the \ characters for special tasks.
+
+readarray days < days.txt
+
+#echo ${days[@]@Q}
+
+readarray -t days < days.txt
+
+#echo ${days[@]@Q}
+
+: '
+
+We cannot provide the output of a command as a input to the readarray command using pipeline, because in pipeline each command runs in its own subshell. So the ouptut of one command dont exit in 
+another command subshell 
+ 
+To provide the output of one command as an input to readarray command, we have to use process substitution such as, readarray array_name < <(command)
+
+For example:
+
+readarray files < <(ls ~/Desktop/Bash-op/outputs)
+
+'
+
+readarray -t  files < <(ls ~/Desktop/Bash-op/outputs/)
+echo ${files[@]@Q}
+
+
+
