@@ -1,0 +1,55 @@
+#! /usr/local/bin/bash
+
+# In this script, we will build 3 scripts using all the shell scripting that we learned so far.
+
+# ----------------- First_Script ------ cruft_remover.sh -------------------------------------
+
+: '
+
+cd $HOME
+echo "The present working directory: $PWD"
+read -p "Enter the path to the folder:" path
+read -p "Enter the name of the folder you want to check for the cruft:" folder
+read -p "How many days old?" days
+cd "$path"
+readarray -t files < <(find $folder -type f -mtime "+$days" -maxdepth 1)
+
+for file in "${files[@]}"; do
+	rm -i "$file"
+done
+
+'
+
+# ----------------- Second_Script -------- folder_organiser.sh -------------------------------
+
+: '
+
+cd "$HOME"
+echo "$PWD is the present working directory"
+read -p "Enter the path to the folder you want to organise: " path
+cd $path
+ls  .
+read -p "Enter the folder name:" group
+while read file; do
+	case "$file" in
+		*.jpg | *.jpeg | *.png) folder="Images" ;;
+		*.doc | *.docx | *.txt | *.pdf) folder="documents" ;;
+		*) folder="." ;;
+	esac
+	
+	if [ ! -d "./$group/$folder" ]; then
+		mkdir "./$group/$folder"
+		mv ./$group/$file "./$group/$folder"
+	else
+		mv ./$group/$file "./$group/$folder"
+	fi
+done < <(ls $group)
+
+'
+
+# ----------------Third_Script ------------- toolkit.sh ---------------------------------------
+
+PS3="Which utility you want to run?"
+select script in "read" "for_loop" ; do
+	$HOME/Desktop/Bash-OP/scripts/$script
+done
