@@ -1,0 +1,44 @@
+#! /usr/local/bin/bash
+
+# Shellcheck helps in finding syntax errors in the script. It also make recommendations on our script.
+
+# link to the shellcheck www.shellcheck.net
+
+# we can use the shellcheck from the terminal. First we have to install the shellcheck package by running the command "sudo apt install shellcheck"
+
+# shelcheck has one main limitation that is it cannot detect the error that the environment required to run the file is existed or not. 
+
+# It also don't know the permissions assigned to the respective file.
+
+# -------------------- Shellcheck Project ---------------------------
+
+cd ~/Desktop/Bash-OP/scripts/shellcheck/
+shellcheck *
+
+# Using shellcheck I solved all the issues in the two files located in the shellcheck folder.
+
+# --------------------- ****************** -----------------------------
+
+# ---------------- Error message structure + How to solve them -----------------
+
+: '
+
+Most commom errors in the bash are
+
+	* syntax errors -----> Due to the error in the syntax.
+	* Path errors   -----> mislocating the file.
+	* File not found ----> File not exist or the given path is not correct.
+	* Permission denied -> Permission is not given t that particular file or folder to read/write/execute.
+	* Command not found -> Program is not installed in the system or we typed the command name wrongly.
+
+To know whether the  commands are internal or external 
+
+	* we can use type -a "command". For example "type -a cd" will give the output as "cd is a shell builtin" which means it is a built in command.
+
+To know more about the command we have to use
+
+	* Internal ----> help
+	* External ----> man or help
+
+To get more information about the command how it works we can use the -d and -s options along with the man, help, or info commands to know what it does, and how to use respectively.
+'
