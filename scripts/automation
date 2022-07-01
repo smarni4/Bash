@@ -1,0 +1,70 @@
+#! /usr/local/bin/bash
+
+# ------------------------- Scheduling and Automation ---------------------
+
+# List of commands ---> At, Cron Service, Anacron Service
+
+# ------------------ At Command -------------------------------------------
+
+#  We can schedule and manage jobs using at command.
+
+ 
+
+# syntax of at command is  ----> at "time"
+#			       <command>
+# to exit the at command       ctrl + d
+
+# After successfully exiting the at command, it will prompt a message as "job ID at time"
+
+# To see all the listed jobs -----------------> at -l
+
+# To remove the at job -----------------------> at -r  job_ID
+
+# To set a file to run at particular time ----> at -t [[cc]YY]MMDDHHMM[.SS] -f file_name
+: '
+
+cd $HOME/Desktop/Bash-OP/outputs/
+mkdir at_outputs
+touch at_outputs/file{1..10}.txt
+'
+
+# ------------------------ CRON ------------------------------------------
+
+: '
+
+ Crontab known as cron table is basically a text file which consists a list of commands with a time and date when to run.
+
+ crontab -e:
+       To edit the crontab for current user we have to run the command "crontab -e". Where -e stands for edit. This command will automatically updates the changes that you made in the file by the time you 
+       run this command.
+
+---->  The format of a cronjob is "minute hour day_of_month month day_of_week command"
+
+---->  We have to provide required permissions to the script file using "chmod ug+x path to the file."
+
+
+touch ~/Desktop/Bash-OP/outputs/cron_op.txt
+date >> ~/Desktop/Bash-OP/outputs/cron_op.txt
+
+'
+
+
+# ------------------- CRON Directories -----------------------------------------
+
+: '
+
+ CRON directories are the folders in our system, where we can store our files  that we want to run at particular time sequences.
+
+ CRON directories are loacted at /etc directory in our system. 
+
+'
+# ------------------------ ANACRON -----------------------------------------------
+
+: '
+
+ It allows the system to  run the cron jobs that are missed because the system is not on at that time once the system is on.
+
+ The syntax to write the anacrontab is 
+	
+	"period_in_days(1 - runs every single day)	delay_in_minutes(5 - to allow the jobs to not get collide)	reference_name_of_file	command_to_run "	
+'
