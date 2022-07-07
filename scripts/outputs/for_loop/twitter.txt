@@ -1,9 +1,0 @@
-HTTP/1.1 301 Moved Permanently
-location: https://www.twitter.com/
-cache-control: no-cache, no-store, max-age=0
-content-length: 0
-x-response-time: 1
-x-connection-hash: 050b7d717f2f3442e0a1ad47059d258ace098fabe7dab3c94ca537818cc462eb
-date: Mon, 20 Jun 2022 03:44:50 GMT
-server: tsa_b
-

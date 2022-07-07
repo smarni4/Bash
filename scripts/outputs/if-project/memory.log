@@ -1,9 +1,0 @@
-Filesystem     512-blocks      Used Available Capacity iused      ifree %iused  Mounted on
-/dev/disk1s7s1  489358120  29760712 309202848     9%  501138 1546014240    0%   /
-devfs                 398       398         0   100%     692          0  100%   /dev
-/dev/disk1s4    489358120   8390712 309202848     3%       5 1546014240    0%   /System/Volumes/VM
-/dev/disk1s2    489358120    706216 309202848     1%    1877 1546014240    0%   /System/Volumes/Preboot
-/dev/disk1s6    489358120     10240 309202848     1%      19 1546014240    0%   /System/Volumes/Update
-/dev/disk1s5    489358120 138834560 309202848    31%  690712 1546014240    0%   /System/Volumes/Data
-/dev/disk1s1    489358120      1856 309202848     1%     144 1546014240    0%   /Volumes/apple ssd - Data
-map auto_home           0         0         0   100%       0          0  100%   /System/Volumes/Data/home
