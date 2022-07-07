@@ -1,0 +1,52 @@
+#! /usr/local/bin/bash
+
+# SSH - Secure shell, it is a protocol to open shell in another machine and work on that machine from our machine terminal.
+
+# We can connect to the other machine using the command "ssh username@ipaddress" and entering the passphrase given by us while creating the key using the command "ssh-keygen"
+
+# we can use the crontab to execute the scripts in remote server. The cronjobs will continue working even we  are not connected to that remote servers after starting the cronjob.
+
+# ---------------------- SCP -----------------------------
+
+# we use the scp command to push and get the files from/to the remote servers.
+
+# The format of using scp command is -----> scp source_path destination_path.
+
+# while sending the file from local pc to remote serve ----> scp source_path user_name@ip_addr:destination_path.
+
+# while getting the file from remote server to local pc ----> scp user_name@ip_addr:source_path destination_path.
+
+# ------------------------------ PROJECT ---------------------
+
+cd ~/Desktop/Bash-OP/outputs
+
+touch project.log
+echo "" >> project.log
+echo "Date: $(date)" >> project.log
+echo "" >> project.log
+
+ping -c 1 google.com &> /dev/null
+
+if [ $? -eq 0 ]; then
+	echo "Internet: connected" >> project.log
+else
+	echo "Internet: Disconnected" >> project.log
+fi
+echo "" >> project.log
+
+echo "RAM Usage: $(sysctl -n  hw.memsize) " >> project.log
+echo "" >> project.log
+sysctl vm.swapusage >> project.log
+echo "" >> project.log
+echo "Disk Usage: " >> project.log
+echo "" >> project.log
+df -h >> project.log
+echo " ------------------------------------------ " >> project.log
+
+# After finishing the script, we have to automate the process by using crontabs. 
+
+# * * * * * ~/Desktop/Bash-OP/scripts/remote_servers -----> This will run the script every minute and updates the project.log file .
+
+# Now to download the project.log file into our local system, we have to create a crontab in our local machine.
+
+# */2 * * * * scp srikanthmarni@srikanths-air:~/project.log	~/Desktop/Bash-OP/outputs ----> This will download the output file every two minutes.
